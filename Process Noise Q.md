@@ -172,12 +172,11 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 | $T$ 很小（高频采样，如 $T < 0.1\text{s}$） | 两种差异不大，用离散近似 $T^4/4$ 计算简便即可                   |
 | $T$ 较大，或导航/航天等高精度场景              | 用严格连续积分 $T^3/3$，否则滤波器会**低估真实不确定性**，导致过度自信甚至发散 |
 
-
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 
 ---
 
-## 5. 总结
+## 8. 总结
 
 图片中的推导逻辑是：
 
@@ -191,6 +190,6 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 - **$Q_{11}$ 系数不同**：连续白噪声在整段时间内持续随机抖动，对位置的累积扰动比"一次采样后固定"更大（$\frac{1}{3} > \frac{1}{4}$）。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE3NDg1NDY5ODQsLTEzMTExOTU0NTUsMT
+eyJoaXN0b3J5IjpbLTE5NDk2MDQ1MzUsLTEzMTExOTU0NTUsMT
 k5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
