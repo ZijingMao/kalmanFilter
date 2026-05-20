@@ -54,7 +54,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^4}{4} & \frac{T^3}{2} \\ \frac{T
 
 ## 4. 这种方法 vs. 严格连续时间积分
 
-工程上两个 $\sigma_a^2$ 经常被混用，但**物理意义和单位完全不同**：
+工程上连续和离散的 $\sigma_a^2$ 经常被混用，但**物理意义和单位完全不同**：
 
 | 语境 | 符号含义 | 单位 | 关系 |
 |------|---------|------|------|
@@ -223,7 +223,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTIwNzg2NDY4NzMsMTc3MDkzNjMxMSwtMT
-ExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1
-ODgyNTA3LDE2MTE2Nzk3XX0=
+eyJoaXN0b3J5IjpbOTU0MjM1NDg4LDE3NzA5MzYzMTEsLTExMT
+Y0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3OTc2NywtMTYxNTg4
+MjUwNywxNjExNjc5N119
 -->
