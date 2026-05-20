@@ -232,7 +232,7 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 
 ---
 
-## 7. 快速参考公式
+## 10. 快速参考公式
 
 | 模型 | 关键假设 | Q 矩阵 |
 |------|---------|--------|
@@ -246,7 +246,7 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTIxMjQwOTA0LC0xNjcwODI4NzA3LDE3Nz
-A5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3
-OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbLTg3NTEyNDA3NCwtMTY3MDgyODcwNywxNz
+cwOTM2MzExLC0xMTE2NDk4MTUwLC0xMzExMTk1NDU1LDE5OTc4
+Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OTddfQ==
 -->
