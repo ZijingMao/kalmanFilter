@@ -119,7 +119,7 @@ $$\boxed{Q = \sigma_a^2 \int_0^T e^{A\tau} G G^T e^{A^T\tau} \, d\tau}$$
 
 $$e^{A\tau} = I + A\tau + \frac{A^2\tau^2}{2!} = \begin{bmatrix} 1 & \tau \\ 0 & 1 \end{bmatrix}$$
 
-是基于**连续时间白噪声**假设（加速度是功率谱密度为 $S_w$ 的白噪声）
+是基于**连续时间白噪声**假设（加速度是功率谱密度为 $\sigma_a^2$ 的白噪声）
 
 ### 5.5 计算被积函数
 
@@ -228,7 +228,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTMzMzMwNDE1OSwxNzcwOTM2MzExLC0xMT
+eyJoaXN0b3J5IjpbLTM1MDEwMjc2NywxNzcwOTM2MzExLC0xMT
 E2NDk4MTUwLC0xMzExMTk1NDU1LDE5OTc4Nzk3NjcsLTE2MTU4
 ODI1MDcsMTYxMTY3OTddfQ==
 -->
