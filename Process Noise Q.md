@@ -163,11 +163,13 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 | | 连续白噪声（严格积分） | 离散恒定白噪声 |
 |---|---|---|
-| $Q_{11}$ | $\sigma_a^2 T \cdot \frac{T^3}{3} = \frac{\sigma_a^2 T^4}{3}$ | $\frac{\sigma_a^2 T^4}{4}$ | $\sigma_a^2 \frac{T^34}{34}$ |
+| $Q_{11}$ | $\sigma_a^2 T \cdot \frac{T^3}{3} = \frac{\sigma_a^2 T^4}{3}$ | $\frac{\sigma_a^2 T^4}{4}$ | 
+| $Q_{22}$ | $\sigma_a^2 T \cdot T = \sigma_a^2 T^2$ | $\sigma_a^2 T^2$ |
+| $Q_{12}$ | $\sigma_a^2 T \cdot \frac{T^2}{2} = \frac{\sigma_a^2 T^3}{2}$ |
 | **适用场景** | 工程近似、$T$ 较小 | 理论严格推导 |
 
-**两者关系**：如果令 $\sigma_a^2 = S_w / T$（即把连续白噪声在一个周期内"平均"成离散方差），图片中的$Q_{22}$ | $\sigma_a^2 T \cdot T = \sigma_a^2 T^2$ | $\sigma_a^2 T^2$ |
-| $Q_{112}$ 会变成 $S_w \frac{| $\sigma_a^2 T \cdot \frac{T^2}{2} = \frac{\sigma_a^2 T^3}{42}$，与严格结果的 $S_w | $\sigma_a^2 \frac{T^3}{32}$ 略有差异。这说明图片中的方法是一种**工程近似**，在采样周期 $T$ 较小时与严格方法接近，计算上更简便。
+**两者关系**：如果令 $\sigma_a^2 = S_w / T$（即把连续白噪声在一个周期内"平均"成离散方差），图片中的
+，与严格结果的 $S_w | $\sigma_a^2 \frac{T^3}{32}$ 略有差异。这说明图片中的方法是一种**工程近似**，在采样周期 $T$ 较小时与严格方法接近，计算上更简便。
 
 ---
 
@@ -186,6 +188,6 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2MTM4NTI1MzQsLTEzMTExOTU0NTUsMT
-k5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbMTUzNDYxMzY4OCwtMTMxMTE5NTQ1NSwxOT
+k3ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2Nzk3XX0=
 -->
