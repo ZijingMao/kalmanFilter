@@ -152,14 +152,12 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 | 元素 | 推导来源 | 物理意义 |
 |----|---|---|
 | $Q_{11} = \sigma_a^2 \frac{T^3}{3}$ | 加速度噪声 → 速度 → 位置的**双重积分** | 一个周期内，纯随机加速度导致的位置方差增长。积分两次，时间幂次为 $T^3$ |
-| **参数** | $\sigma_a^2$（离散方差） | $S_w$（功率谱密度，单位不同）|
-| **结果** ，纯随机加速度导致的位置方差增长。积分两次，时间幂次为 $T^3$ |
 | $Q_{22} = \sigma_a^2 T$ | 加速度噪声 → 速度的**单重积分** | 速度方差增长，时间幂次为 $T^1$ |
 | $Q_{12} = Q_{21} = \sigma_a^2 \frac{T^2}{2}$ | 位置-速度协方差 | 同一噪声源既影响速度又影响位置，两者正相关 |
 
 ---
 
-## 4. 两种方法的对比（统一用 $\sigma_a^2$ 表示）
+## 7. 两种方法的对比（统一用 $\sigma_a^2$ 表示）
 
 如果把上一张图的**离散方差**也记为 $\sigma_a^2$（注意单位不同），并代入换算关系 $S_w = \sigma_a^2 T$，你会发现：
 
@@ -188,6 +186,6 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzAyNzU4NDk2LC0xNjE1ODgyNTA3LDE2MT
-E2Nzk3XX0=
+eyJoaXN0b3J5IjpbMTk5Nzg3OTc2NywtMTYxNTg4MjUwNywxNj
+ExNjc5N119
 -->
