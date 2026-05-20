@@ -305,17 +305,17 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 | 模型 | 关键假设 | Q 矩阵 |
 |------|---------|--------|
 | 一维恒定 | 状态本身有随机扰动 | $Q = \sigma_w^2$ |
-| 匀速 CV | 加速度为白噪声 | $Q = S_w \begin{bmatrix} T^3/3 & T^2/2 \\ T^2/2 & T \end{bmatrix}$ |
-| 匀加速 CA | jerk 为白噪声 | $Q = S_w \begin{bmatrix} T^5/20 & T^4/8 & T^3/6 \\ T^4/8 & T^3/3 & T^2/2 \\ T^3/6 & T^2/2 & T \end{bmatrix}$ |
-| 随机游走 | 状态导数为白噪声 | $Q = S_w T$ |
+| 匀速 CV | 加速度为白噪声 | $Q = \sigma_w^2 T \begin{bmatrix} T^3/3 & T^2/2 \\ T^2/2 & T \end{bmatrix}$ |
+| 匀加速 CA | jerk 为白噪声 | $Q = \sigma_w^2 T \begin{bmatrix} T^5/20 & T^4/8 & T^3/6 \\ T^4/8 & T^3/3 & T^2/2 \\ T^3/6 & T^2/2 & T \end{bmatrix}$ |
+| 随机游走 | 状态导数为白噪声 | $Q = \sigma_w^2 T$ |
 
 ---
 
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDMwMTYzMTI2LDE5OTcwMjY4NjUsNDQ1Mz
-g2NSwtODc1MTI0MDc0LC0xNjcwODI4NzA3LDE3NzA5MzYzMTEs
-LTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3OTc2NywtMT
-YxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbMTIyNjQyNTc0NCw0MzAxNjMxMjYsMTk5Nz
+AyNjg2NSw0NDUzODY1LC04NzUxMjQwNzQsLTE2NzA4Mjg3MDcs
+MTc3MDkzNjMxMSwtMTExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOT
+k3ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2Nzk3XX0=
 -->
