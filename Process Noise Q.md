@@ -159,7 +159,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 ## 7. 两种方法的对比（统一用 $\sigma_a^2$ 表示）
 
-如果把上一张图的**离散方差**也记为 $\sigma_a^2$（注意单位不同），并代入换算关系 $S_w = \sigma_a^2 T$，你会发现：
+如果把**离散方差**记为 $\sigma_a^2$（注意单位不同），并代入和连续方差的换算关系 $S_w = \sigma_a^2 T$，你会发现：
 
 | | 连续白噪声（严格积分） | 离散恒定白噪声 |
 |---|---|---|
@@ -175,117 +175,9 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 
 ---
+## 8. 工程调参的实用技巧
 
-
-构建过程噪声协方差矩阵 **Q** 是卡尔曼滤波设计中最关键也最容易出错的环节之一。下面从理论推导到工程实践，系统地说明构建方法。
-
----
-
-## 1. Q 的物理意义
-
-Q 描述的是**状态预测步骤中不确定性增长的程度**：
-
-$$P_{n+1,n} = F P_{n,n} F^T + Q$$
-
-它量化了系统动态模型与真实物理过程之间的差异。模型越精确，Q 越小；模型越粗糙或存在未建模动态，Q 越大。
-
----
-
-## 2. 构建 Q 的核心思路：从"噪声源"出发
-
-不要直接猜 Q 的每个元素，而是先找到**真正驱动系统不确定性的物理噪声源**，再映射到状态空间。
-
-### 通用步骤
-
-1. **识别噪声源**：通常是加速度噪声、力矩噪声、温度扰动、控制输入噪声等。
-2. **写出连续时间噪声强度**：设物理噪声为 $w(t)$，其功率谱密度（PSD）为 $S_w$。
-3. **离散化映射到状态**：通过系统动力学，把连续噪声积分映射到离散状态增量。
-4. **计算协方差**：$Q = E[w_d w_d^T]$。
-
----
-
-## 3. 常见模型的 Q 构建方法
-
-### 3.1 一维恒定系统（如液位、温度）
-
-状态：$x$（标量）
-
-$$x_{n+1} = x_n + w_n$$
-
-噪声直接作用于状态本身：
-$$Q = q = \sigma_w^2$$
-
-其中 $\sigma_w$ 是过程噪声标准差，反映状态的真实波动幅度。
-
----
-
-### 3.2 运动学模型（Constant Velocity）
-
-状态：$\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \end{bmatrix}$
-
-假设**加速度**是随机噪声（白噪声），即 $\ddot{x} = w(t)$。
-
-连续时间状态空间：
-$$\dot{\mathbf{x}} = \underbrace{\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}}_{A} \mathbf{x} + \underbrace{\begin{bmatrix} 0 \\ 1 \end{bmatrix}}_{G} w(t)$$
-
-离散化（采样周期 $T$）后，通过**连续到离散的协方差转换**：
-
-$$Q = \int_0^T e^{A\tau} G S_w G^T (e^{A\tau})^T d\tau$$
-
-计算得：
-
-$$\boxed{Q = S_w \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T^2}{2} & T \end{bmatrix}}$$
-
-其中 $S_w$ 是加速度噪声的功率谱密度（单位：$\text{(m/s}^2)^2/\text{Hz}$）。
-
-**工程近似**：如果 $T$ 很小，有时简化为：
-$$Q \approx S_w \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T^2}{2} & T \end{bmatrix}$$
-
----
-
-### 3.3 匀加速模型（Constant Acceleration）
-
-状态：$\mathbf{x} = \begin{bmatrix} x \\ \dot{x} \\ \ddot{x} \end{bmatrix}$
-
-假设**加加速度（jerk）**是白噪声：$\dddot{x} = w(t)$。
-
-同理推导得：
-
-$$\boxed{Q = S_w \begin{bmatrix} \frac{T^5}{20} & \frac{T^4}{8} & \frac{T^3}{6} \\ \frac{T^4}{8} & \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T^3}{6} & \frac{T^2}{2} & T \end{bmatrix}}$$
-
----
-
-### 3.4 通用线性系统
-
-对于 $\dot{\mathbf{x}} = A\mathbf{x} + G w(t)$，离散化后：
-
-$$Q_d = \int_0^T e^{A\tau} G Q_c G^T (e^{A\tau})^T d\tau$$
-
-其中 $Q_c$ 是连续时间过程噪声协方差矩阵。
-
-**数值计算**：当解析积分困难时，可用数值积分或泰勒展开近似：
-$$Q_d \approx T \cdot G Q_c G^T + \frac{T^2}{2}(A G Q_c G^T + G Q_c G^T A^T) + \cdots$$
-
----
-
-## 4. 状态扩增后的 Q 构建
-
-如果你按之前的建议把 bias/drift 扩增为状态：
-
-$$\mathbf{x} = \begin{bmatrix} x \\ b \\ d \end{bmatrix}$$
-
-需要为扩增状态指定各自的噪声：
-
-- **bias $b$**：通常建模为**随机常数**（random constant），即 $\dot{b} = 0$，所以 $Q$ 中对应 $b$ 的噪声项为 0 或极小值。如果 bias 会缓慢漂移，可设为小的随机游走：$Q_{bb} = \sigma_b^2 T$。
-- **drift $d$**：通常建模为**随机游走**：$\dot{d} = w_d(t)$，所以 $Q_{dd} = S_d T$。
-
-完整的 Q 矩阵可能是分块对角或耦合形式，取决于噪声源是否独立。
-
----
-
-## 5. 工程调参的实用技巧
-
-### 5.1 从物理意义出发定量级
+### 8.1 从物理意义出发定量级
 
 问自己：在一个采样周期 $T$ 内，由于模型不确定性，状态各分量最多可能变化多少？
 
@@ -336,6 +228,6 @@ $$\mathbf{x} = \begin{bmatrix} x \\ b \\ d \end{bmatrix}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMjk5OTM4NTY3LC0xMzExMTk1NDU1LDE5OT
-c4Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMT
+k5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
