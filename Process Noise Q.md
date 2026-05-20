@@ -89,7 +89,7 @@ $$\dot{\mathbf{x}}(t) = A \mathbf{x}(t) + G \eta(t)$$
 - 噪声输入矩阵 $G = \begin{bmatrix} 0 \\ 1 \end{bmatrix}$（噪声直接作用在加速度层）
 - $\eta(t)$ 是加速度白噪声，功率谱密度为 $\sigma_a^2$
 
-### 2.2 离散化后的等效噪声
+### 5.2 离散化后的等效噪声
 
 从 $t$ 到 $t+T$ 积分，离散化后的状态转移为：
 
@@ -99,7 +99,7 @@ $$\mathbf{x}_{k+1} = \underbrace{e^{AT}}_{F} \mathbf{x}_k + \underbrace{\int_0^T
 
 $$Q = E[w_k w_k^T] = E\left[ \left(\int_0^T e^{A\tau} G \eta(\tau) d\tau\right) \left(\int_0^T e^{A\gamma} G \eta(\gamma) d\gamma\right)^T \right]$$
 
-### 2.3 利用白噪声性质化简
+### 5.3 利用白噪声性质化简
 
 把期望移入积分，利用 $E[\eta(\tau)\eta(\gamma)] = \sigma_a^2 \delta(\tau-\gamma)$：
 
@@ -113,7 +113,7 @@ $$\boxed{Q = \sigma_a^2 \int_0^T e^{A\tau} G G^T e^{A^T\tau} \, d\tau}$$
 
 这就是**连续到离散协方差转换的核心公式**。
 
-### 2.4 计算矩阵指数 $e^{A\tau}$
+### 5.4 计算矩阵指数 $e^{A\tau}$
 
 对 $A = \begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$，注意到 $A^2 = \begin{bmatrix} 0 & 0 \\ 0 & 0 \end{bmatrix}$，所以：
 
@@ -121,7 +121,7 @@ $$e^{A\tau} = I + A\tau + \frac{A^2\tau^2}{2!} & T \end{bmatrix}$$
 
 是基于**连续时间白噪声**假设（加速度是功率谱密度为 $S_w$ 的白噪声），通过积分 $Q = \int_0^T e^{A\tau} G S_w G^T e^{A+ \cdots = \begin{bmatrix} 1 & \tau \\ 0 & 1 \end{bmatrix}$$
 
-### 2.5 计算被积函数
+### 5.5 计算被积函数
 
 先算 $e^{A\tau} G$：
 
@@ -138,7 +138,7 @@ $$Q = \sigma_a^2 \int_0^T \begin{bmatrix} \tau^2 & \tau \\ \tau & 1 \end{bmatrix
 计算定积分：
 
 - $\int_0^T \tau^2 d\tau = \frac{T^3}{3}$
-- $\int_0^T \tau} d\tau$ 得到的。
+- $\int_0^T \tau d\tau$ 得到的。
 
 | | 图片中的方法 | 严格连续时间积分 = \frac{T^2}{2}$
 - $\int_0^T 1 d\tau = T$
@@ -191,5 +191,5 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQ4NDExMTYyMSwxNjExNjc5N119
+eyJoaXN0b3J5IjpbLTE4MjkxNzE0NzYsMTYxMTY3OTddfQ==
 -->
