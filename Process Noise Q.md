@@ -187,19 +187,17 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 - 如果新息均值**显著不为零** → 模型有偏，可能需要扩增状态或增大 Q。
 - 如果新息方差**远大于理论值** $S = HPH^T + R$  → Q 太小，模型过于自信。
-	- 具体因果链：
-
-1.  **Q 设得太小** → 过程噪声被低估
-    
-2.  **Pk∣k−1​=FPk−1​FT+Q 增长不足** → 预测协方差太小
-    
-3.  **理论新息协方差 S=HPHT+R 被低估** → 滤波器认为"预测很准，测量偏差应该很小"
-    
-4.  **卡尔曼增益 K=PHTS−1 偏小** → 滤波器更相信预测，不太愿意相信测量
-    
-5.  **但真实世界的过程噪声其实很大**（或有未建模动态/bias）→ 预测值持续偏离真实轨迹
-    
-6.  **实际测量值与预测值频繁大幅偏离** → 实际新息方差很大
+	1.  **Q 设得太小** → 过程噪声被低估
+	    
+	2.  **$P_{k∣k−1​}=FP_{k−1}​F^T+Q$增长不足** → 预测协方差太小
+	    
+	3.  **理论新息协方差 $S=HPH^T+R$ 被低估** → 滤波器认为"预测很准，测量偏差应该很小"
+	    
+	4.  **卡尔曼增益 K=PHTS^{−1}$ 偏小** → 滤波器更相信预测，不太愿意相信测量
+	    
+	5.  **但真实世界的过程噪声其实很大**（或有未建模动态/bias）→ 预测值持续偏离真实轨迹
+	    
+	6.  **实际测量值与预测值频繁大幅偏离** → 实际新息方差很大
 - 如果新息方差**远小于理论值** → Q 太大，滤波器过度依赖测量。
 
 ### 5.3 自适应 Q（进阶）
@@ -236,7 +234,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTQzMzMxMDc2LC0xNjcwODI4NzA3LDE3Nz
-A5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3
-OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbLTEzNTQyMTcwMjUsLTE2NzA4Mjg3MDcsMT
+c3MDkzNjMxMSwtMTExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOTk3
+ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2Nzk3XX0=
 -->
