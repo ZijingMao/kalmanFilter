@@ -152,7 +152,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 ---
 
-## 7. 两种方法的对比（统一用 $\sigma_a^2$ 表示）
+## 7. 两种方法的对比
 
 如果把**离散方差**记为 $\sigma_a^2$（注意单位不同），并代入和连续方差的换算关系 $S_w = \sigma_a^2 T$，你会发现：
 
@@ -223,7 +223,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbOTU0MjM1NDg4LDE3NzA5MzYzMTEsLTExMT
-Y0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3OTc2NywtMTYxNTg4
-MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbLTE2NzA4Mjg3MDcsMTc3MDkzNjMxMSwtMT
+ExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1
+ODgyNTA3LDE2MTE2Nzk3XX0=
 -->
