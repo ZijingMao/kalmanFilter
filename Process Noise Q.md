@@ -212,7 +212,7 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 
 这是卡尔曼滤波调参最客观的依据——**让滤波器的"自我预期"与"实际表现"匹配**。
 
-### 5.3 自适应 Q（进阶）
+### 8.3 自适应 Q（进阶）
 
 如果噪声特性时变，可采用：
 - **Sage-Husa 自适应滤波**：在线估计 Q。
@@ -221,7 +221,7 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 
 ---
 
-## 6. 常见误区
+## 9. 常见误区
 
 | 误区 | 问题 | 正确做法 |
 |------|------|---------|
@@ -246,7 +246,7 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzYxODE3NzQyLC0xNjcwODI4NzA3LDE3Nz
+eyJoaXN0b3J5IjpbNTIxMjQwOTA0LC0xNjcwODI4NzA3LDE3Nz
 A5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3
 OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
