@@ -186,7 +186,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 | 位置 | $\Delta x$ | $\approx (\Delta x)^2$ |
 | 速度 | $\Delta v$ | $\approx (\Delta v)^2$ |
 
-### 5.2 利用新息（Innovation）检验
+### 8.2 利用新息（Innovation）检验
 
 运行滤波器后，检查新息序列 $\mathbf{y}_n = \mathbf{z}_n - H\hat{\mathbf{x}}_{n,n-1}$：
 
@@ -228,6 +228,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMT
-k5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbMTc3MDkzNjMxMSwtMTExNjQ5ODE1MCwtMT
+MxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2
+Nzk3XX0=
 -->
