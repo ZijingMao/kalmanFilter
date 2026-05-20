@@ -272,8 +272,6 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 | **数学目标**  | 约束 latent embeddings $\mathbf{z}$ 的分布为 isotropic Gaussian | 变换后新息 $\mathbf{z}_k = S_k^{-1/2}\mathbf{y}_k$ 满足 $E[\mathbf{z}_k\mathbf{z}_k^T] = I$ |
 | **协方差形态** | $E[\mathbf{z}\mathbf{z}^T] \approx I$（各向同性）               | $E[\mathbf{z}_k\mathbf{z}_k^T] = I$（白化后）                                             |
 | **核心操作**  | 通过正则化强制分布趋向球对称                                            | 通过 $S_k^{-1/2}$ 线性变换消除相关性                                                            |
-|           | **LeWM (SIGReg)**                           | 卡尔曼                         |
-| --------- | ------------------------------ | --------------------------- |
 | **性质**    | **训练目标/损失函数**                  | **统计检验/推导步骤**               |
 | **是否可优化** | 是，通过梯度下降优化 Epps-Pulley 统计量     | 否，$S_k$ 是由 $P$ 和 $R$ 解析计算出的 |
 | **时间维度**  | 空间分布（batch 内 embeddings 的边际分布） | 时间序列（新息随时间的条件分布）            |
@@ -314,8 +312,8 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDc2ODI2ODc3LDQ0NTM4NjUsLTg3NTEyND
-A3NCwtMTY3MDgyODcwNywxNzcwOTM2MzExLC0xMTE2NDk4MTUw
-LC0xMzExMTk1NDU1LDE5OTc4Nzk3NjcsLTE2MTU4ODI1MDcsMT
-YxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbMTk5NzAyNjg2NSw0NDUzODY1LC04NzUxMj
+QwNzQsLTE2NzA4Mjg3MDcsMTc3MDkzNjMxMSwtMTExNjQ5ODE1
+MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LD
+E2MTE2Nzk3XX0=
 -->
