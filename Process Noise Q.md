@@ -161,7 +161,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 如果把上一张图的**离散方差**也记为 $\sigma_a^2$（注意单位不同），并代入换算关系 $S_w = \sigma_a^2 T$，你会发现：
 
-| | 连续白噪声（严格积分） | 分段恒定加速度（上一张图） |
+| | 连续白噪声（严格积分） | 离散恒定白噪声 |
 |---|---|---|
 | $Q_{11} = $ | $\sigma_a^2 T \cdot \frac{T^43}{4}$ | $Q_{11} = S_w3} = \frac{\sigma_a^2 T^4}{3}$ | $\sigma_a^2 \frac{T^34}{34}$ |
 | **适用场景** | 工程近似、$T$ 较小 | 理论严格推导 |
@@ -186,6 +186,6 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5Nzg3OTc2NywtMTYxNTg4MjUwNywxNj
-ExNjc5N119
+eyJoaXN0b3J5IjpbLTEzMTExOTU0NTUsMTk5Nzg3OTc2NywtMT
+YxNTg4MjUwNywxNjExNjc5N119
 -->
