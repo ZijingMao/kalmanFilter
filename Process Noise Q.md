@@ -186,7 +186,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 运行滤波器后，检查新息序列 $\mathbf{y}_n = \mathbf{z}_n - H\hat{\mathbf{x}}_{n,n-1}$：
 
 - 如果新息均值**显著不为零** → 模型有偏，可能需要扩增状态或增大 Q。
-- 如果新息方差**远大于理论值** $S = HPH^T + R$ → Q 太小，模型过于自信。
+- 如果新息方差**远大于理论值** $S = HPH^T + R$  → Q 太小，模型过于自信。
 - 如果新息方差**远小于理论值** → Q 太大，滤波器过度依赖测量。
 
 ### 5.3 自适应 Q（进阶）
@@ -223,7 +223,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2NzA4Mjg3MDcsMTc3MDkzNjMxMSwtMT
-ExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1
-ODgyNTA3LDE2MTE2Nzk3XX0=
+eyJoaXN0b3J5IjpbMzU2NDIzNjc1LC0xNjcwODI4NzA3LDE3Nz
+A5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0NTUsMTk5Nzg3
+OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
