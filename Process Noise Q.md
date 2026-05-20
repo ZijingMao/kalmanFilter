@@ -138,10 +138,8 @@ $$Q = \sigma_a^2 \int_0^T \begin{bmatrix} \tau^2 & \tau \\ \tau & 1 \end{bmatrix
 计算定积分：
 
 - $\int_0^T \tau^2 d\tau = \frac{T^3}{3}$
-- $\int_0^T \tau d\tau$ 得到的。
-
-| | 图片中的方法 | 严格连续时间积分 = \frac{T^2}{2}$
-- $\int_0^T 1 d\tau = T$
+- $\int_0^T \tau d\tau= \frac{T^2}{2}$ 
+- $\int_0^T 1 d\tau= T$ 
 
 得到最终结果：
 
@@ -149,7 +147,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 ---
 
-## 3. 物理意义解读
+## 6. 物理意义解读
 
 | 元素 | 推导来源 | 物理意义 |
 |----|---|---|
@@ -191,5 +189,5 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE4MjkxNzE0NzYsMTYxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbLTE2MTU4ODI1MDcsMTYxMTY3OTddfQ==
 -->
