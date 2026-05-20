@@ -277,7 +277,9 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 | **时间维度**  | 空间分布（batch 内 embeddings 的边际分布） | 时间序列（新息随时间的条件分布）            |
 | **因果关系**  | "我希望表示长成这样"                    | "如果模型正确，误差必然这样"             |
 
-
+-   SIGReg 约束的是**状态本身**的分布
+-   新息白化约束的是**预测误差**的分布
+-
 ### 8.3 自适应 Q（进阶）
 
 如果噪声特性时变，可采用：
@@ -312,8 +314,8 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk5NzAyNjg2NSw0NDUzODY1LC04NzUxMj
-QwNzQsLTE2NzA4Mjg3MDcsMTc3MDkzNjMxMSwtMTExNjQ5ODE1
-MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LD
-E2MTE2Nzk3XX0=
+eyJoaXN0b3J5IjpbMTk0NjUyODgwNywxOTk3MDI2ODY1LDQ0NT
+M4NjUsLTg3NTEyNDA3NCwtMTY3MDgyODcwNywxNzcwOTM2MzEx
+LC0xMTE2NDk4MTUwLC0xMzExMTk1NDU1LDE5OTc4Nzk3NjcsLT
+E2MTU4ODI1MDcsMTYxMTY3OTddfQ==
 -->
