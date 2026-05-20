@@ -263,12 +263,6 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 2. 滑动窗口统计 NIS 的样本均值。
 3. 如果持续超出阈值，就拒绝"模型正确"的原假设，进而调整 $Q$ 或 $R$。
 
----
-
-## 4. 一句话总结
-
-> NIS 服从卡方分布，是因为**新息被自己的协方差矩阵"标准化"后，变成了独立标准正态向量，其平方和自然就是卡方分布**。这不是经验统计，而是多元高斯分布二次型的严格数学性质。
-
 - 如果 $\epsilon_k$ 持续 **> 阈值** → $S_k$ 被低估 → 增大 Q（或检查模型）
 - 如果 $\epsilon_k$ 持续 **<< 阈值** → $S_k$ 被高估 → 减小 Q 或 R
 
@@ -308,8 +302,8 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTE2OTkwNzkzMDEsLTg3NTEyNDA3NCwtMT
-Y3MDgyODcwNywxNzcwOTM2MzExLC0xMTE2NDk4MTUwLC0xMzEx
-MTk1NDU1LDE5OTc4Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OT
-ddfQ==
+eyJoaXN0b3J5IjpbMzMwMDE4NjQ0LC04NzUxMjQwNzQsLTE2Nz
+A4Mjg3MDcsMTc3MDkzNjMxMSwtMTExNjQ5ODE1MCwtMTMxMTE5
+NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2Nzk3XX
+0=
 -->
