@@ -266,6 +266,14 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 - 如果 $\epsilon_k$ 持续 **> 阈值** → $S_k$ 被低估 → 增大 Q（或检查模型）
 - 如果 $\epsilon_k$ 持续 **<< 阈值** → $S_k$ 被高估 → 减小 Q 或 R
 
+#### 和LeWM对比拓展
+|           | **LeWM (SIGReg)**                                         | **卡尔曼滤波（新息白化）**                                                                      |
+| --------- | --------------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| **数学目标**  | 约束 latent embeddings $\mathbf{z}$ 的分布为 isotropic Gaussian | 变换后新息 $\mathbf{z}_k = S_k^{-1/2}\mathbf{y}_k$ 满足 $E[\mathbf{z}_k\mathbf{z}_k^T] = I$ |
+| **协方差形态** | $E[\mathbf{z}\mathbf{z}^T] \approx I$（各向同性）               | $E[\mathbf{z}_k\mathbf{z}_k^T] = I$（白化后）                                             |
+| **核心操作**  | 通过正则化强制分布趋向球对称                                            | 通过 $S_k^{-1/2}$ 线性变换消除相关性                                                            |
+
+
 ### 8.3 自适应 Q（进阶）
 
 如果噪声特性时变，可采用：
@@ -300,7 +308,8 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNDQ1Mzg2NSwtODc1MTI0MDc0LC0xNjcwOD
-I4NzA3LDE3NzA5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0
-NTUsMTk5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
+eyJoaXN0b3J5IjpbLTU3NTUyMzE0Miw0NDUzODY1LC04NzUxMj
+QwNzQsLTE2NzA4Mjg3MDcsMTc3MDkzNjMxMSwtMTExNjQ5ODE1
+MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LD
+E2MTE2Nzk3XX0=
 -->
