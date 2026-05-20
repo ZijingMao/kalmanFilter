@@ -200,12 +200,74 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 	6.  **实际测量值与预测值频繁大幅偏离** → 实际新息方差很大
 - 如果新息方差**远小于理论值** → Q 太大，滤波器过度依赖测量。
 
-
 实际工程中常做**归一化新息平方（NIS）检验**：
 
 $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 
-理论上 $\epsilon_k \sim \chi^2$（卡方分布），自由度等于测量维度。
+理论上 $\epsilon_k \sim \chi^2$（卡方分布），自由度等于测量维度，推理如下。
+
+#### 第一步：新息是高斯随机向量
+
+如果卡尔曼滤波的系统模型、噪声假设都正确，那么：
+- 预测误差 $\tilde{\mathbf{x}}_{k|k-1} = \mathbf{x}_k - \hat{\mathbf{x}}_{k|k-1}$ 是零均值高斯（因为初始误差和噪声都是高斯，线性系统保持高斯性）
+- 测量噪声 $\mathbf{v}_k$ 是零均值高斯
+- 新息 $\mathbf{y}_k = H\tilde{\mathbf{x}}_{k|k-1} + \mathbf{v}_k$ 是**两个独立高斯向量的线性组合**
+
+因此：
+$$\mathbf{y}_k \sim \mathcal{N}(\mathbf{0}, S_k)$$
+
+其中 $S_k = H P_{k|k-1} H^T + R$。
+
+#### 第二步：白化（Whitening）变换
+
+对协方差矩阵 $S_k$ 做**特征分解**或**Cholesky 分解**，令 $S_k = L L^T$（$L$ 为下三角矩阵）。
+
+定义变换后的向量：
+$$\mathbf{z}_k = L^{-1} \mathbf{y}_k = S_k^{-1/2} \mathbf{y}_k$$
+
+计算 $\mathbf{z}_k$ 的协方差：
+
+$$\text{Cov}(\mathbf{z}_k) = S_k^{-1/2} \cdot \text{Cov}(\mathbf{y}_k) \cdot (S_k^{-1/2})^T = S_k^{-1/2} S_k S_k^{-1/2} = I$$
+
+所以：
+$$\mathbf{z}_k \sim \mathcal{N}(\mathbf{0}, I)$$
+
+这意味着 $\mathbf{z}_k$ 的每个分量 $z_1, z_2, \dots, z_m$ 都是**独立的标准正态分布** $N(0,1)$。
+
+#### 第三步：二次型 = 独立标准正态的平方和
+
+把 $\mathbf{z}_k$ 代回 NIS 的定义：
+
+$$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k = (L^{-1}\mathbf{y}_k)^T (L^{-1}\mathbf{y}_k) = \mathbf{z}_k^T \mathbf{z}_k = \sum_{i=1}^{m} z_i^2$$
+
+其中 $m$ 是测量向量 $\mathbf{z}_k$ 的维度。
+
+统计学中，**卡方分布**正是这么定义的：
+
+> 若 $z_1, z_2, \dots, z_m \overset{iid}{\sim} N(0,1)$，则 $\sum_{i=1}^m z_i^2 \sim \chi^2(m)$
+
+自由度为 $m$，因为求和项里有 $m$ 个**独立**的标准正态变量。
+
+因此：
+
+$$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
+
+其中 $m$ 就是**测量维度**（即传感器一次给出几个数）。
+
+- **如果模型完全正确**（$F, H, Q, R$ 都准），那么 $\epsilon_k$ 必须服从 $\chi^2(m)$。
+- **如果模型有错误**（比如 $Q$ 太小、有未建模 bias、$R$ 不准），新息的统计特性就会偏离这个分布。
+
+所以工程上把 NIS 当作**假设检验**：
+
+1. 设定置信区间（如 95%），查 $\chi^2$ 表得到阈值。
+2. 滑动窗口统计 NIS 的样本均值。
+3. 如果持续超出阈值，就拒绝"模型正确"的原假设，进而调整 $Q$ 或 $R$。
+
+---
+
+## 4. 一句话总结
+
+> NIS 服从卡方分布，是因为**新息被自己的协方差矩阵"标准化"后，变成了独立标准正态向量，其平方和自然就是卡方分布**。这不是经验统计，而是多元高斯分布二次型的严格数学性质。
 
 - 如果 $\epsilon_k$ 持续 **> 阈值** → $S_k$ 被低估 → 增大 Q（或检查模型）
 - 如果 $\epsilon_k$ 持续 **<< 阈值** → $S_k$ 被高估 → 减小 Q 或 R
@@ -246,7 +308,8 @@ $$\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbLTg3NTEyNDA3NCwtMTY3MDgyODcwNywxNz
-cwOTM2MzExLC0xMTE2NDk4MTUwLC0xMzExMTk1NDU1LDE5OTc4
-Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbLTE2OTkwNzkzMDEsLTg3NTEyNDA3NCwtMT
+Y3MDgyODcwNywxNzcwOTM2MzExLC0xMTE2NDk4MTUwLC0xMzEx
+MTk1NDU1LDE5OTc4Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OT
+ddfQ==
 -->
