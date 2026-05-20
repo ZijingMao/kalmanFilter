@@ -279,7 +279,7 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 
 -   SIGReg 约束的是**状态本身**的分布
 -   新息白化约束的是**预测误差**的分布
--
+
 ### 8.3 自适应 Q（进阶）
 
 如果噪声特性时变，可采用：
@@ -314,8 +314,8 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMTk0NjUyODgwNywxOTk3MDI2ODY1LDQ0NT
-M4NjUsLTg3NTEyNDA3NCwtMTY3MDgyODcwNywxNzcwOTM2MzEx
-LC0xMTE2NDk4MTUwLC0xMzExMTk1NDU1LDE5OTc4Nzk3NjcsLT
-E2MTU4ODI1MDcsMTYxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbLTE3NDE1MzQ3NTYsMTk5NzAyNjg2NSw0ND
+UzODY1LC04NzUxMjQwNzQsLTE2NzA4Mjg3MDcsMTc3MDkzNjMx
+MSwtMTExNjQ5ODE1MCwtMTMxMTE5NTQ1NSwxOTk3ODc5NzY3LC
+0xNjE1ODgyNTA3LDE2MTE2Nzk3XX0=
 -->
