@@ -163,7 +163,7 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 | | 连续白噪声（严格积分） | 离散恒定白噪声 |
 |---|---|---|
-| $Q_{11}$ | $\sigma_a^2 T \cdot \frac{T^3}{3} = \frac{T^4}{4}$ | $Q_{11} = S_w3} = \frac{\sigma_a^2 T^4}{3}$ | $\sigma_a^2 \frac{T^34}{34}$ |
+| $Q_{11}$ | $\sigma_a^2 T \cdot \frac{T^3}{3} = \frac{\sigma_a^2 T^4}{3}$ | $\frac{\sigma_a^2 T^4}{4}$ | $\sigma_a^2 \frac{T^34}{34}$ |
 | **适用场景** | 工程近似、$T$ 较小 | 理论严格推导 |
 
 **两者关系**：如果令 $\sigma_a^2 = S_w / T$（即把连续白噪声在一个周期内"平均"成离散方差），图片中的$Q_{22}$ | $\sigma_a^2 T \cdot T = \sigma_a^2 T^2$ | $\sigma_a^2 T^2$ |
@@ -186,6 +186,6 @@ $$\boxed{Q = \sigma_a^2 \begin{bmatrix} \frac{T^3}{3} & \frac{T^2}{2} \\ \frac{T
 
 **工程结论**：$T$ 较小时两者差异很小；$T$ 较大或精度要求极高时，严格积分（$T^3/3$）更准确。
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNzQ1MjExOTUwLC0xMzExMTk1NDU1LDE5OT
-c4Nzk3NjcsLTE2MTU4ODI1MDcsMTYxMTY3OTddfQ==
+eyJoaXN0b3J5IjpbLTE2MTM4NTI1MzQsLTEzMTExOTU0NTUsMT
+k5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
