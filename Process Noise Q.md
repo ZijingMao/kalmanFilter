@@ -266,8 +266,6 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 - 如果 $\epsilon_k$ 持续 **> 阈值** → $S_k$ 被低估 → 增大 Q（或检查模型）
 - 如果 $\epsilon_k$ 持续 **<< 阈值** → $S_k$ 被高估 → 减小 Q 或 R
 
-这是卡尔曼滤波调参最客观的依据——**让滤波器的"自我预期"与"实际表现"匹配**。
-
 ### 8.3 自适应 Q（进阶）
 
 如果噪声特性时变，可采用：
@@ -302,8 +300,7 @@ $$\boxed{\epsilon_k = \mathbf{y}_k^T S_k^{-1} \mathbf{y}_k \sim \chi^2(m)}$$
 **总结**：构建 Q 的正确顺序是：**识别物理噪声源 → 写出连续时间模型 → 离散化映射到状态空间 → 计算协方差积分**。避免直接"拍脑袋"填数字，否则滤波器要么发散要么过度平滑。
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbMzMwMDE4NjQ0LC04NzUxMjQwNzQsLTE2Nz
-A4Mjg3MDcsMTc3MDkzNjMxMSwtMTExNjQ5ODE1MCwtMTMxMTE5
-NTQ1NSwxOTk3ODc5NzY3LC0xNjE1ODgyNTA3LDE2MTE2Nzk3XX
-0=
+eyJoaXN0b3J5IjpbNDQ1Mzg2NSwtODc1MTI0MDc0LC0xNjcwOD
+I4NzA3LDE3NzA5MzYzMTEsLTExMTY0OTgxNTAsLTEzMTExOTU0
+NTUsMTk5Nzg3OTc2NywtMTYxNTg4MjUwNywxNjExNjc5N119
 -->
